@@ -1,0 +1,26 @@
+{{ define "header" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/public/css/prism.css">
+    <link rel="stylesheet" href="/public/css/app.css">
+</head>
+<body>
+    <nav class="head">
+        <div class="containter head-content">
+            <div class="logo">Twenming's Personal Blog</div>
+            <div class="nav">
+                <a href="/">Blog</a>
+                <a href="/">Categories</a>
+                <a href="/">Tags</a>
+                <!-- This Place can add extra navbar -->
+            </div>
+        </div>
+    </nav>
+    <div class="post-wrap"></div>
+
+{{ end }}
