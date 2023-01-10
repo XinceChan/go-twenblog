@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/XinceChan/go-blog-backend/database"
 	"github.com/XinceChan/go-blog-backend/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
@@ -21,8 +20,6 @@ func init() {
 var viewsfs embed.FS
 
 func main() {
-	database.Connect()
-
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")

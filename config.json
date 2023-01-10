@@ -1,0 +1,19 @@
+{
+    "port": 80,
+    "pageSize": 3,
+    "descriptionLen": 200,
+    "author": "XinceChan",
+    "icp": "XXXX",
+    "webHookSecret": "ChenXince",
+    "categoryDisplayQuantity": 6,
+    "tagDisplayQuantity": 6,
+    "utterancesRepo": "chenxince/blog_docs",
+    "timeLayout": "2006.01.02 15:04",
+    "siteName": "Twenming's Personal Blog",
+    "htmlKeywords": "forest blog,Golang,前端",
+    "htmlDescription": "Twenming's Personal blog",
+    "documentGitUrl": "https://github.com/XinceChan/blog_docs.git",
+    "themeColor": "#f44336",
+    "dashboardEntrance": "/admin",
+    "themeOption": ["#673ab7","#f44336","#9c27b0","#2196f3","#607d8b","#795548"]
+}

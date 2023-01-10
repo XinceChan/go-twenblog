@@ -1,24 +1,22 @@
 package models
 
-import (
-	"time"
-
-	"gorm.io/gorm"
-)
+import "time"
 
 type Article struct {
-	gorm.Model
 	Title       string    `json:"title"`
-	UploadedAt  time.Time `json:"date"`
+	Date        time.Time `json:"date"`
 	Description string    `json:"description"`
-	Tags        []Tag     `json:"tags"`
+	Tags        []string  `json:"tags"`
 	Author      string    `json:"author"`
-	Category    string    `json:"category"`
-	Path        string    `json:"path"` // File Path
-	UserID      string    `json:"userid"`
-	User        User      `json:"user" gorm:"foreignKey:UserID"`
+	MusicId     string    `json:"musicId"`
+	Path        string
+	ShortUrl    string
+	Category    string
 }
 
 type Articles []Article
 
-var ArticleList Articles
+type ArticleDetail struct {
+	Article
+	Body string
+}
