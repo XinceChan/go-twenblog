@@ -29,7 +29,6 @@ func Connect() {
 	db.AutoMigrate(
 		&models.User{},
 		&models.Article{},
-		&models.Category{},
 		&models.Tag{},
 	)
 }

@@ -11,7 +11,7 @@ type Article struct {
 	Title       string    `json:"title"`
 	UploadedAt  time.Time `json:"date"`
 	Description string    `json:"description"`
-	Tags        []string  `json:"tags" gorm:"-"`
+	Tags        []Tag     `json:"tags"`
 	Author      string    `json:"author"`
 	Category    string    `json:"category"`
 	Path        string    `json:"path"` // File Path

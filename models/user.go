@@ -5,7 +5,7 @@ type User struct {
 	Nickname  string `json:"nickname"`
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
-	Password  []byte `json:"password" gorm:"-"`
+	Password  []byte `json:"-"`
 	Email     string `json:"email"`
 	Phone     string `json:"phone"`
 	Avatar    string `json:"avatar"` // Avatar path

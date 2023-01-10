@@ -1,7 +1,9 @@
 package models
 
+import "gorm.io/gorm"
+
 type Tag struct {
-	Name     string    `json:"name"`
-	Quantity string    `json:"quantity"`
-	Articles []Article `json:"articles" gorm:"-"`
+	gorm.Model
+	Name      string `json:"name"`
+	ArticleID uint   `json:"article_id"`
 }
