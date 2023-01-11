@@ -2,14 +2,12 @@ package main
 
 import (
 	"embed"
-	"log"
 	"net/http"
-	"os"
 
+	"github.com/XinceChan/go-blog-backend/config"
 	"github.com/XinceChan/go-blog-backend/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
-	"github.com/joho/godotenv"
 )
 
 func init() {
@@ -20,11 +18,6 @@ func init() {
 var viewsfs embed.FS
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	port := os.Getenv("PORT")
 
 	// Create a new engine
 	engine := html.NewFileSystem(http.FS(viewsfs), ".html")
@@ -36,9 +29,8 @@ func main() {
 	})
 	// Get static html files
 	app.Static("/public", "./public")
-	// Get uploaded file
-	app.Static("/files", "./files")
+
 	routes.Setup(app)
 
-	app.Listen(":" + port)
+	app.Listen(":" + config.Cfg.Port)
 }

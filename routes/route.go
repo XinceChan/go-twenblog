@@ -7,4 +7,5 @@ import (
 
 func Setup(app *fiber.App) {
 	app.Get("/", controllers.Index)
+	app.Get("/blog", controllers.Index)
 }
