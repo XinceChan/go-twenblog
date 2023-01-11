@@ -195,7 +195,7 @@ func readMarkdown(path string) (Article, ArticleDetail, error) {
 
 	var buf bytes.Buffer
 	if err := goldmark.Convert(markdownArrInfo[1], &buf); err != nil {
-		article.Title = "文章[" + article.Title + "]解析 JSON 出错，请检查。"
+		article.Title = "文章[" + article.Title + "]解析 markdown 出错，请检查。"
 		return article, articleDetail, nil
 	}
 
