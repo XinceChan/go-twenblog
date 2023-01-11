@@ -53,7 +53,7 @@ func initConfig(cfg *Config) {
 	cfg.Author = viper.GetString("author")                                // author
 	cfg.Icp = viper.GetString("icp")                                      // icp
 	cfg.TimeLayout = viper.GetString("timeLayout")                        // timeLayout
-	cfg.Port = viper.GetInt("port")                                       // port
+	cfg.Port = viper.GetString("port")                                    // port
 	cfg.WebHookSecret = viper.GetString("webHookSecret")                  // webHookSecret
 	cfg.CategoryDisplayQuantity = viper.GetInt("categoryDisplayQuantity") // categoryDisplayQuantity
 	cfg.TagDisplayQuantity = viper.GetInt("tagDisplayQuantity")           // tagDisplayQuantity
