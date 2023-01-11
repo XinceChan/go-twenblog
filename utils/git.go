@@ -1,5 +1,18 @@
 package utils
 
+import (
+	"errors"
+	"strings"
+)
+
+// 通过url返回自己仓库的名字
 func GetRepoName(gitUrl string) (string, error) {
-	return "", nil
+	if !strings.HasSuffix(gitUrl, ".git") {
+		return "", errors.New("git URL must end with .git！")
+	}
+
+	noSuffixUrl := strings.TrimSuffix(gitUrl, ".git")
+	urlArr := strings.Split(noSuffixUrl, "/")
+
+	return urlArr[len(urlArr)-1], nil
 }

@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -19,6 +20,22 @@ func IsFile(filename string) bool {
 		existed = true
 	}
 	return existed
+}
+
+func MakeDir(dir string) error {
+	if !IsDir(dir) {
+		return os.MkdirAll(dir, os.ModePerm)
+	}
+	return nil
+}
+
+func RemoveDir(dir string) error {
+
+	if !IsDir(dir) {
+		return errors.New("cannot delete without directory")
+	}
+
+	return os.RemoveAll(dir)
 }
 
 func CopyFile(src, dst string) (int64, error) {
