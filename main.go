@@ -5,13 +5,14 @@ import (
 	"net/http"
 
 	"github.com/XinceChan/go-blog-backend/config"
+	"github.com/XinceChan/go-blog-backend/models"
 	"github.com/XinceChan/go-blog-backend/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
 )
 
 func init() {
-
+	models.CompiledContent()
 }
 
 //go:embed views/*

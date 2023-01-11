@@ -11,5 +11,4 @@ func Setup(app *fiber.App) {
 	app.Get("/categories", controllers.Category)
 	app.Get("/tags", controllers.Tag)
 	app.Get("/article", controllers.Article)
-
 }

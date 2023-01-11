@@ -8,6 +8,7 @@ type PageResult struct {
 	Page      int      `json:"page"`
 	PageSize  int      `json:"pageSize"`
 	TotalPage int
+	Spread    []int
 }
 
 func Pagination(articles *Articles, page int, pageSize int) PageResult {
@@ -40,6 +41,7 @@ func Pagination(articles *Articles, page int, pageSize int) PageResult {
 		}
 		result.List = (*articles)[startNum:endNum]
 	}
+	result.Spread = SpreadDigit(result.TotalPage)
 
 	return result
 }
