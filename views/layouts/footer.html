@@ -1,10 +1,10 @@
 {{ define "footer" }}
     </div>  
     <div class="footer">
-        <span>This Place need ICP</span><span class="footer-divider"> | </span>
+        <span>{{ .Config.Icp }}</span><span class="footer-divider"> | </span>
         <span>
-            © 2022-2023 TwenMing
-            Powered By <a href="/" target="_blank"> XinceChan(github) </a>
+            © 2022-2023 {{ .Config.Author }}
+            Powered By <a href="/" target="_blank"> {{ .Config.AppName }} </a>
         </span>
     </div>
 </body>

@@ -1,18 +1,22 @@
 {{ define "header" }}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{{ .Title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Keywords" content="{{ .Config.HtmlKeywords }}" />
+    <meta name="description" content="{{ .Config.HtmlDescription }}" />
+    <title>{{ .Title }} - {{ .Config.SiteName }}</title>
+    <style>:root{--primary: {{ .Config.ThemeColor }}}</style>
     <link rel="stylesheet" href="/public/css/prism.css">
     <link rel="stylesheet" href="/public/css/app.css">
 </head>
 <body>
     <nav class="head">
         <div class="containter head-content">
-            <div class="logo">Twenming's Personal Blog</div>
+            <div class="logo">{{ .Config.SiteName }}</div>
             <div class="nav">
                 <a href="/">Blog</a>
                 <a href="/">Categories</a>
