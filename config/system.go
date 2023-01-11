@@ -7,6 +7,7 @@ type systemConfig struct {
 	GitHookUrl          string
 	AppRepository       string
 	DocumentDir         string
+	DocumentAssetsDir   string
 	DocumentContentDir  string
 	DocumentExtraNavDir string
 }

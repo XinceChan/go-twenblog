@@ -1,8 +1,10 @@
 package config
 
 import (
+	"errors"
 	"fmt"
 	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/XinceChan/go-blog-backend/utils"
@@ -65,4 +67,50 @@ func initConfig(cfg *Config) {
 	cfg.ThemeColor = viper.GetString("themeColor")                        // themeColor
 	cfg.ThemeOption = viper.GetStringSlice("themeOption")                 // themeOption
 	cfg.DashboardEntrance = viper.GetString("dashboardEntrance")          // dashboardEntrance
+}
+
+func Initial() {
+	if _, err := exec.LookPath("git"); err != nil {
+		fmt.Println("请先安装git")
+		panic(err)
+	}
+	if !utils.IsDir(Cfg.DocumentDir) {
+		fmt.Println("正在克隆文档仓库，请稍等...")
+		out, err := utils.RunCmdByDir(Cfg.CurrentDir, "git", "clone", Cfg.DocumentGitUrl)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(out)
+	} else {
+		out, err := utils.RunCmdByDir(Cfg.DocumentDir, "git", "pull")
+		fmt.Println(out)
+		if err != nil {
+			panic(err)
+		}
+	}
+	if err := checkDocDirAndBindConfig(&Cfg); err != nil {
+		fmt.Println("文档缺少必要的目录")
+		panic(err)
+	}
+
+	imgDir := Cfg.CurrentDir + "/images"
+	if !utils.IsDir(imgDir) {
+		if os.Mkdir(imgDir, os.ModePerm) != nil {
+			panic("生成images目录失败!")
+		}
+	}
+}
+
+func checkDocDirAndBindConfig(cfg *Config) error {
+	dirs := []string{"assets", "content", "extra_nav"}
+	for _, dir := range dirs {
+		absoluteDir := Cfg.DocumentDir + "/" + dir
+		if !utils.IsDir(absoluteDir) {
+			return errors.New("documents cannot lack " + absoluteDir + " dir")
+		}
+	}
+	cfg.DocumentAssetsDir = cfg.DocumentDir + "/assets"
+	cfg.DocumentContentDir = cfg.DocumentDir + "/content"
+	cfg.DocumentExtraNavDir = cfg.DocumentDir + "/extra_nav"
+	return nil
 }
