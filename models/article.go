@@ -181,7 +181,7 @@ func readMarkdown(path string) (Article, ArticleDetail, error) {
 	markdown = bytes.Replace(markdown, []byte("```json"), []byte(""), 1)
 	markdownArrInfo := bytes.SplitN(markdown, []byte("```"), 2)
 
-	article.Description = cropDesc(markdown)
+	article.Description = cropDesc(markdownArrInfo[1])
 
 	if err := json.Unmarshal(bytes.TrimSpace(markdownArrInfo[0]), &article); err != nil {
 		article.Title = "文章[" + article.Title + "]解析 JSON 出错，请检查。"

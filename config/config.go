@@ -48,6 +48,7 @@ func init() {
 	Cfg.DocumentDir = Cfg.CurrentDir + "/" + repoName
 	Cfg.GitHookUrl = "/api/git_push_hook"
 	Cfg.AppRepository = "https://github.com/XinceChan/TwenBlog"
+
 }
 
 func initConfig(cfg *Config) {

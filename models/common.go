@@ -16,6 +16,14 @@ func CompiledContent() {
 	wg := sync.WaitGroup{}
 	var err error
 	// 导航
+	wg.Add(1)
+	go func() {
+		Navigation, err = initExtraNav(config.Cfg.DocumentExtraNavDir)
+		if err != nil {
+			panic(err)
+		}
+		wg.Done()
+	}()
 
 	// 文章
 	wg.Add(1)
