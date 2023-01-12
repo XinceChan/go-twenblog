@@ -1,6 +1,9 @@
 {{ template "header" . }}
     <div class="sub-title">- {{ .Title }} -</div>
+
+    <!-- 这里markdown格式显示还是有问题 -->
     <div class="article markdow">
         {{ unescapeHTML .Data.Body }}
     </div>
+
 {{ template "footer" . }}

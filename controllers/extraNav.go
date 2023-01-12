@@ -8,11 +8,12 @@ import (
 )
 
 func ExtraNav(c *fiber.Ctx) error {
-	name := c.Query("name")
+	name := c.Query("name", "About")
 
 	for _, nav := range models.Navigation {
 		if nav.Title == name {
 			articleDetail, err := models.ReadArticleDetail(nav.Path)
+			// fmt.Println(articleDetail)
 			if err != nil {
 				log.Println(err)
 			}

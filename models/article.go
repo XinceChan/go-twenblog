@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"os"
 	"sort"
 	"strings"
@@ -171,10 +172,16 @@ func readMarkdown(path string) (Article, ArticleDetail, error) {
 	article.Title = strings.TrimSuffix(strings.ToUpper(mdFile.Name()), ".MD")
 	article.Date = Time(mdFile.ModTime())
 
+	var buf bytes.Buffer
+
 	if !bytes.HasPrefix(markdown, []byte("```json")) {
 		article.Description = cropDesc(markdown)
 		articleDetail.Article = article
-		articleDetail.Body = string(markdown)
+		if err := goldmark.Convert(markdown, &buf); err != nil {
+			article.Title = "文章[" + article.Title + "]解析 markdown 出错，请检查。"
+			return article, articleDetail, nil
+		}
+		articleDetail.Body = buf.String()
 		return article, articleDetail, nil
 	}
 
@@ -193,13 +200,14 @@ func readMarkdown(path string) (Article, ArticleDetail, error) {
 
 	articleDetail.Article = article
 
-	var buf bytes.Buffer
 	if err := goldmark.Convert(markdownArrInfo[1], &buf); err != nil {
 		article.Title = "文章[" + article.Title + "]解析 markdown 出错，请检查。"
 		return article, articleDetail, nil
 	}
 
 	articleDetail.Body = buf.String()
+
+	fmt.Println(articleDetail.Body)
 	return article, articleDetail, nil
 }
 
