@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"html/template"
 	"net/http"
 
 	"github.com/XinceChan/go-blog-backend/config"
@@ -22,6 +23,10 @@ func main() {
 
 	// Create a new engine
 	engine := html.NewFileSystem(http.FS(viewsfs), ".html")
+
+	engine.AddFunc("unescapeHTML", func(s string) template.HTML {
+		return template.HTML(s)
+	})
 
 	// Pass the engine to the Views
 	app := fiber.New(fiber.Config{

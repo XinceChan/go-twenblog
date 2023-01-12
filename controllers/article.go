@@ -17,6 +17,5 @@ func Article(c *fiber.Ctx) error {
 	if err != nil {
 		log.Println(err)
 	}
-
 	return c.Render("views/article", models.BuildViewDate("Article", articleDetail))
 }

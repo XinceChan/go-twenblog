@@ -19,7 +19,7 @@
         <img class="icon" src="/public/image/tags.svg" alt="">
         <span>
             标签
-            {{ range .Tags }}
+            {{ range .Data.Tags }}
             <a class="category" href="/?tag={{ . }}">{{ . }}</a>
             {{ end }}
         </span>
@@ -40,7 +40,7 @@
 {{ end }}
 
 <div class="article markdow">
-    {{ .Data.Body }}
+    {{ unescapeHTML .Data.Body }}
 </div>
 
 <script src="/public/js/prism.js"></script>
