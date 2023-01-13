@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"os"
 	"sort"
 	"strings"
@@ -207,7 +206,7 @@ func readMarkdown(path string) (Article, ArticleDetail, error) {
 
 	articleDetail.Body = buf.String()
 
-	fmt.Println(articleDetail.Body)
+	// fmt.Println(articleDetail.Body)
 	return article, articleDetail, nil
 }
 
