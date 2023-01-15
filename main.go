@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"html/template"
 	"net/http"
 
@@ -33,8 +34,13 @@ func main() {
 		AppName: "Twen Go BLOG APP v0.0.1",
 		Views:   engine,
 	})
+
+	fmt.Println(config.Cfg.CurrentDir)
+	fmt.Println(config.Cfg.DocumentAssetsDir)
 	// Get static html files
 	app.Static("/public", "./public")
+	app.Static("/assets", config.Cfg.DocumentAssetsDir)
+	app.Static("/images", config.Cfg.CurrentDir+"/images")
 
 	routes.Setup(app)
 

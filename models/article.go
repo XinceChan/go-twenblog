@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"os"
 	"sort"
 	"strings"
@@ -124,7 +123,7 @@ func RecursiveReadArticles(dir string) (Articles, error) {
 			strings.HasSuffix(upperName, ".GIF") ||
 			strings.HasSuffix(upperName, ".JPG") {
 
-			dst := config.Cfg.CurrentDir + "/images" + name
+			dst := config.Cfg.CurrentDir + "/images/" + name
 			if !utils.IsFile(dst) {
 				_, _ = utils.CopyFile(path, dst)
 			}
@@ -207,7 +206,7 @@ func readMarkdown(path string) (Article, ArticleDetail, error) {
 
 	articleDetail.Body = buf.String()
 
-	fmt.Println(articleDetail.Body)
+	// fmt.Println(articleDetail.Body)
 	return article, articleDetail, nil
 }
 
