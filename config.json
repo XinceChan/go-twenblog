@@ -1,9 +1,9 @@
 {
     "port": "80",
     "pageSize": 4,
-    "descriptionLen": 200,
+    "descriptionLen": 150,
     "author": "XinceChan",
-    "icp": "This Place need ICP",
+    "icp": "浙ICP备2023001361号",
     "webHookSecret": "XinceChan",
     "categoryDisplayQuantity": 6,
     "tagDisplayQuantity": 6,

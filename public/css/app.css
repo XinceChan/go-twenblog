@@ -45,9 +45,15 @@ a:hover{
     color: var(--primary,#673ab7);
 
 }
+
 p{
     line-height: 2em;
 }
+
+li{
+    margin: 10px 0;
+}
+
 
 blockquote{
     text-indent: 2em;
@@ -141,6 +147,20 @@ blockquote::before{
     border-radius: 4px;
 }
 
+.markdow table{
+    overflow: auto;
+    display: block;
+    border-spacing: 0;
+    border-collapse: 0;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.markdow table tr th, .markdow table tr td {
+    padding: .5rem 1rem;
+    border: 1px solid var(--gray-200);
+}
 
 .footer{
     color: #999;

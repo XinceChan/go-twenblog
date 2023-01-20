@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	"fmt"
 	"html/template"
 	"net/http"
 
@@ -35,8 +34,6 @@ func main() {
 		Views:   engine,
 	})
 
-	fmt.Println(config.Cfg.CurrentDir)
-	fmt.Println(config.Cfg.DocumentAssetsDir)
 	// Get static html files
 	app.Static("/public", "./public")
 	app.Static("/assets", config.Cfg.DocumentAssetsDir)
